@@ -32,12 +32,86 @@ document.addEventListener('DOMContentLoaded', () => {
       s.style.transform = 'translateX(0)';
       s.style.opacity = '1';
       s.setAttribute('aria-hidden', 'false');
+      
+      // Animate elements in the first slide
+      setTimeout(() => {
+        animateSlideContent(s);
+      }, 300);
     } else {
       s.style.transform = 'translateX(100%)';
       s.style.opacity = '0';
       s.setAttribute('aria-hidden', 'true');
     }
   });
+
+  // Animate slide content when it becomes active
+  function animateSlideContent(slide) {
+    // Reset animations
+    const textElements = slide.querySelectorAll('.text > *');
+    const imageElements = slide.querySelectorAll('.slide-image-container');
+    
+    textElements.forEach(el => {
+      el.style.animation = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+    });
+    
+    imageElements.forEach(el => {
+      el.style.animation = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+    });
+    
+    // Force reflow
+    void slide.offsetWidth;
+    
+    // Animate text elements with staggered delay
+    textElements.forEach((el, i) => {
+      el.style.animation = `fadeInUp 0.8s ease-out ${i * 0.2}s both`;
+    });
+    
+    // Animate image elements
+    imageElements.forEach((el, i) => {
+      el.style.animation = `fadeInUp 0.8s ease-out ${(textElements.length * 0.2) + (i * 0.2)}s both`;
+    });
+    
+    // Special animations for info cards
+    const infoCards = slide.querySelectorAll('.info-card');
+    if (infoCards.length) {
+      infoCards.forEach((card, i) => {
+        card.style.animation = `fadeInUp 0.6s ease-out ${0.4 + (i * 0.2)}s both`;
+      });
+    }
+    
+    // Special animations for note boxes
+    const noteBoxes = slide.querySelectorAll('.note-box');
+    if (noteBoxes.length) {
+      noteBoxes.forEach((box, i) => {
+        box.style.animation = `fadeInUp 0.6s ease-out ${0.6 + (i * 0.2)}s both`;
+      });
+    }
+    
+    // Add animation to images
+    const images = slide.querySelectorAll('.slide-image');
+    images.forEach(img => {
+      // Reset any previous animation
+      img.style.animation = 'none';
+      
+      // Add subtle floating animation
+      img.style.animation = 'float 6s ease-in-out infinite';
+      
+      // Add hover effect with JavaScript for better compatibility
+      img.addEventListener('mouseenter', () => {
+        img.style.transform = 'scale(1.05)';
+        img.style.filter = 'brightness(1.05) contrast(1.05)';
+      });
+      
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+        img.style.filter = 'brightness(0.95) contrast(0.95)';
+      });
+    });
+  }
 
   // Update progress bar
   function updateProgress(idx) {
@@ -100,6 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
       to.style.opacity = '';
       to.style.zIndex = '';
       to.setAttribute('aria-hidden', 'false');
+      
+      // Animate content of the new active slide
+      animateSlideContent(to);
 
       current = nextIdx;
       updateDots(current);
@@ -159,4 +236,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize progress bar
   updateProgress(current);
+  
+  // Add CSS animations dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-8px) translateX(5px); }
+      50% { transform: translateY(4px) translateX(10px); }
+      75% { transform: translateY(8px) translateX(-5px); }
+    }
+  `;
+  document.head.appendChild(style);
 });
