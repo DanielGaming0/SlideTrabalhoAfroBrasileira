@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('nextBtn');
   const dotsWrap = document.getElementById('dots');
   const progressBar = document.getElementById('progressBar');
-  const TRANS_MS = 500; // Reduzido de 600ms para 500ms
+  const TRANS_MS = 500;
 
   let current = 0;
   let isAnimating = false;
@@ -33,10 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
       s.style.opacity = '1';
       s.setAttribute('aria-hidden', 'false');
       
-      // Animate elements in the first slide
-      setTimeout(() => {
-        animateSlideContent(s);
-      }, 100); // Reduzido de 300ms para 100ms
+      // Animate elements in the first slide IMMEDIATELY
+      animateSlideContent(s);
     } else {
       s.style.transform = 'translateX(100%)';
       s.style.opacity = '0';
@@ -65,29 +63,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Force reflow
     void slide.offsetWidth;
     
-    // Animate text elements with staggered delay (reduzido)
+    // Animate text elements with staggered delay (SEM ATRASO INICIAL)
     textElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.1}s both`; // Reduzido
+      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.05}s both`;
     });
     
-    // Animate image elements
+    // Animate image elements (SEM ATRASO INICIAL)
     imageElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out ${(textElements.length * 0.1) + (i * 0.1)}s both`; // Reduzido
+      el.style.animation = `fadeInUp 0.6s ease-out ${(textElements.length * 0.05) + (i * 0.05)}s both`;
     });
     
-    // Special animations for info cards
+    // Special animations for info cards (SEM ATRASO INICIAL)
     const infoCards = slide.querySelectorAll('.info-card');
     if (infoCards.length) {
       infoCards.forEach((card, i) => {
-        card.style.animation = `fadeInUp 0.5s ease-out ${0.2 + (i * 0.1)}s both`; // Reduzido
+        card.style.animation = `fadeInUp 0.5s ease-out ${i * 0.05}s both`;
       });
     }
     
-    // Special animations for note boxes
+    // Special animations for note boxes (SEM ATRASO INICIAL)
     const noteBoxes = slide.querySelectorAll('.note-box');
     if (noteBoxes.length) {
       noteBoxes.forEach((box, i) => {
-        box.style.animation = `fadeInUp 0.5s ease-out ${0.3 + (i * 0.1)}s both`; // Reduzido
+        box.style.animation = `fadeInUp 0.5s ease-out ${i * 0.05}s both`;
       });
     }
     
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.animation = 'none';
       
       // Add subtle floating animation
-      img.style.animation = 'float 5s ease-in-out infinite'; // Reduzido
+      img.style.animation = 'float 5s ease-in-out infinite';
       
       // Add hover effect with JavaScript for better compatibility
       img.addEventListener('mouseenter', () => {
@@ -199,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
       to.style.zIndex = '';
       to.setAttribute('aria-hidden', 'false');
       
-      // Animate content of the new active slide
+      // Animate content of the new active slide IMMEDIATELY
       animateSlideContent(to);
 
       current = nextIdx;
@@ -209,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     to.addEventListener('transitionend', done, { once: true });
-    setTimeout(done, TRANS_MS + 50); // Reduzido de 90ms para 50ms
+    setTimeout(done, TRANS_MS);
   }
 
   // Navigation controls
