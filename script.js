@@ -1,11 +1,11 @@
 // script.js atualizado
 document.addEventListener('DOMContentLoaded', () => {
-  const slides = Array.from(document.querySelectorAll('.slide'));
+  const slidesContainer = document.getElementById('slides');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const dotsWrap = document.getElementById('dots');
   const progressBar = document.getElementById('progressBar');
-  const TRANS_MS = 500;
+  const TRANS_MS = 600;
 
   let current = 0;
   let isAnimating = false;
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const THRESHOLD = 40;
 
   // Build dots navigation
+  const slides = Array.from(document.querySelectorAll('.slide'));
   slides.forEach((s, i) => {
     const d = document.createElement('button');
     d.className = 'dot';
@@ -300,4 +301,52 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('touchstart', () => {
     clearInterval(autoRotateInterval);
   });
+
+  // Add CSS animations dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+  `;
+  document.head.appendChild(style);
 });
