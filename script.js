@@ -33,8 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
       s.style.opacity = '1';
       s.setAttribute('aria-hidden', 'false');
       
-      // Animate elements in the first slide IMMEDIATELY
-      animateSlideContent(s);
+      // Animate elements in the first slide IMMEDIATELY - ZERO DELAY
+      requestAnimationFrame(() => {
+        animateSlideContent(s);
+      });
     } else {
       s.style.transform = 'translateX(100%)';
       s.style.opacity = '0';
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Animate slide content when it becomes active
+  // Animate slide content when it becomes active - ZERO DELAY
   function animateSlideContent(slide) {
     // Reset animations
     const textElements = slide.querySelectorAll('.text > *');
@@ -63,29 +65,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Force reflow
     void slide.offsetWidth;
     
-    // Animate text elements with staggered delay (SEM ATRASO INICIAL)
+    // Animate text elements with ZERO initial delay
     textElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.05}s both`;
+      el.style.animation = `fadeInUp 0.6s ease-out both`;
     });
     
-    // Animate image elements (SEM ATRASO INICIAL)
+    // Animate image elements with ZERO initial delay
     imageElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out ${(textElements.length * 0.05) + (i * 0.05)}s both`;
+      el.style.animation = `fadeInUp 0.6s ease-out both`;
     });
     
-    // Special animations for info cards (SEM ATRASO INICIAL)
+    // Special animations for info cards with ZERO initial delay
     const infoCards = slide.querySelectorAll('.info-card');
     if (infoCards.length) {
       infoCards.forEach((card, i) => {
-        card.style.animation = `fadeInUp 0.5s ease-out ${i * 0.05}s both`;
+        card.style.animation = `fadeInUp 0.5s ease-out both`;
       });
     }
     
-    // Special animations for note boxes (SEM ATRASO INICIAL)
+    // Special animations for note boxes with ZERO initial delay
     const noteBoxes = slide.querySelectorAll('.note-box');
     if (noteBoxes.length) {
       noteBoxes.forEach((box, i) => {
-        box.style.animation = `fadeInUp 0.5s ease-out ${i * 0.05}s both`;
+        box.style.animation = `fadeInUp 0.5s ease-out both`;
       });
     }
     
@@ -197,8 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
       to.style.zIndex = '';
       to.setAttribute('aria-hidden', 'false');
       
-      // Animate content of the new active slide IMMEDIATELY
-      animateSlideContent(to);
+      // Animate content of the new active slide IMMEDIATELY - ZERO DELAY
+      requestAnimationFrame(() => {
+        animateSlideContent(to);
+      });
 
       current = nextIdx;
       updateDots(current);
