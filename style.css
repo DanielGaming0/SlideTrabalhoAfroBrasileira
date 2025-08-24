@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css atualizado */
 :root {
   --primary: #8B4513;
   --primary-light: #A0522D;
@@ -155,10 +155,18 @@ html, body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-20px) translateX(10px); }
-  50% { transform: translateY(10px) translateX(20px); }
-  75% { transform: translateY(20px) translateX(-10px); }
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(10px) translateX(20px);
+  }
+  75% {
+    transform: translateY(20px) translateX(-10px);
+  }
 }
 
 .title-content {
@@ -214,18 +222,170 @@ html, body {
 }
 
 /* Background colors for each slide */
-.slide:nth-child(2) { background: linear-gradient(135deg, #FFF8F0 0%, #FFE4C9 100%); }
-.slide:nth-child(3) { background: linear-gradient(135deg, #FFF0E5 0%, #FFD5B8 100%); }
-.slide:nth-child(4) { background: linear-gradient(135deg, #FFEBD6 0%, #FFD2A7 100%); }
-.slide:nth-child(5) { background: linear-gradient(135deg, #FFE4CC 0%, #FFC999 100%); }
-.slide:nth-child(6) { background: linear-gradient(135deg, #FFE2C7 0%, #FFC792 100%); }
-.slide:nth-child(7) { background: linear-gradient(135deg, #FFDFC2 0%, #FFBF85 100%); }
-.slide:nth-child(8) { background: linear-gradient(135deg, #FFD9B8 0%, #FFB872 100%); }
-.slide:nth-child(9) { background: linear-gradient(135deg, #FFD4AF 0%, #FFB05E 100%); }
-.slide:nth-child(10) { background: linear-gradient(135deg, #FFCFA6 0%, #FFA84B 100%); }
-.slide:nth-child(11) { background: linear-gradient(135deg, #FFCA9D 0%, #FFA038 100%); }
-.slide:nth-child(12) { background: linear-gradient(135deg, #FFC594 0%, #FF9825 100%); }
-.slide--conclusion { background: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #CD853F 100%); }
+.slide:nth-child(2) {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE4C9 100%);
+}
+
+.slide:nth-child(3) {
+  background: linear-gradient(135deg, #FFF0E5 0%, #FFD5B8 100%);
+}
+
+.slide:nth-child(4) {
+  background: linear-gradient(135deg, #FFEBD6 0%, #FFD2A7 100%);
+}
+
+.slide:nth-child(5) {
+  background: linear-gradient(135deg, #FFE4CC 0%, #FFC999 100%);
+}
+
+.slide:nth-child(6) {
+  background: linear-gradient(135deg, #FFE2C7 0%, #FFC792 100%);
+}
+
+.slide:nth-child(7) {
+  background: linear-gradient(135deg, #FFDFC2 0%, #FFBF85 100%);
+}
+
+.slide:nth-child(8) {
+  background: linear-gradient(135deg, #FFD9B8 0%, #FFB872 100%);
+}
+
+.slide:nth-child(9) {
+  background: linear-gradient(135deg, #FFD4AF 0%, #FFB05E 100%);
+}
+
+.slide:nth-child(10) {
+  background: linear-gradient(135deg, #FFCFA6 0%, #FFA84B 100%);
+}
+
+.slide:nth-child(11) {
+  background: linear-gradient(135deg, #FFCA9D 0%, #FFA038 100%);
+}
+
+.slide:nth-child(12) {
+  background: linear-gradient(135deg, #FFC594 0%, #FF9825 100%);
+}
+
+.slide--conclusion {
+  background: linear-gradient(135deg, rgba(139, 69, 19, 0.7) 0%, rgba(160, 82, 45, 0.7) 50%, rgba(205, 133, 63, 0.7) 100%);
+}
+
+/* Background decorative elements for all slides */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 90% 30%, rgba(160, 82, 45, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 50% 80%, rgba(205, 133, 63, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 20% 70%, rgba(210, 105, 30, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 20%);
+  z-index: -1;
+  animation: backgroundPulse 15s infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+/* Floating circles animation */
+.floating-circles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: floatAround 20s infinite linear;
+}
+
+.circle:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  background-color: var(--primary);
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  animation-duration: 25s;
+}
+
+.circle:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-light);
+  top: 70%;
+  left: 80%;
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+.circle:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-bright);
+  top: 30%;
+  left: 70%;
+  animation-delay: -10s;
+  animation-duration: 15s;
+}
+
+.circle:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  background-color: var(--secondary);
+  top: 60%;
+  left: 10%;
+  animation-delay: -15s;
+  animation-duration: 30s;
+}
+
+.circle:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  background-color: var(--accent);
+  top: 20%;
+  left: 40%;
+  animation-delay: -7s;
+  animation-duration: 22s;
+}
+
+@keyframes floatAround {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, 50px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, 100px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-30px, 50px) rotate(270deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg);
+  }
+}
 
 /* Content layout */
 .content-wrap {
@@ -513,9 +673,12 @@ p {
   color: white;
 }
 
-.slide--conclusion h2,
-.slide--conclusion h3 {
+.slide--conclusion h2, .slide--conclusion h3 {
   color: white;
+}
+
+.slide--conclusion h2::after {
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .key-points {
@@ -728,14 +891,22 @@ p {
 }
 
 @keyframes progressShine {
-  0% { left: -20px; }
-  100% { left: 100%; }
+  0% {
+    left: -20px;
+  }
+  100% {
+    left: 100%;
+  }
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
@@ -781,12 +952,61 @@ p {
   animation: fadeInUp 0.5s ease-out;
 }
 
+/* New animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.pulse {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.rotate-slow {
+  animation: rotateSlow 20s infinite linear;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .content-wrap {
     gap: 40px;
   }
-  
+
   .slide-image-container {
     width: 40%;
   }
@@ -796,15 +1016,15 @@ p {
   .slide {
     padding: 40px;
   }
-  
+
   .slide-image {
     height: 300px;
   }
-  
+
   .info-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .importance-grid {
     grid-template-columns: 1fr;
   }
@@ -816,53 +1036,65 @@ p {
     flex-direction: column;
     overflow-y: auto;
   }
-  
+
   .content-wrap {
     flex-direction: column;
     gap: 32px;
   }
-  
+
   .text {
     max-width: 100%;
   }
-  
+
   .slide-image-container {
     width: 100%;
     order: -1;
     margin-bottom: 20px;
   }
-  
+
   .slide-image {
     height: 250px;
     max-width: 100%;
   }
-  
+
   .info-cards {
     grid-template-columns: 1fr;
   }
-  
+
   h2 {
     font-size: 28px;
   }
-  
+
   h2 i {
     font-size: 24px;
   }
-  
+
   h3 {
     font-size: 20px;
   }
-  
+
   p {
     font-size: 16px;
   }
-  
+
   .slide--title h1 {
     font-size: 36px;
   }
-  
+
   .subtitle {
     font-size: 18px;
+  }
+  
+  /* Adjust floating circles for mobile */
+  .circle {
+    display: none;
+  }
+  
+  .circle:nth-child(1),
+  .circle:nth-child(2) {
+    display: block;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -870,33 +1102,33 @@ p {
   .slide {
     padding: 24px 16px;
   }
-  
+
   .controls {
     bottom: 16px;
   }
-  
+
   .controls button {
     width: 40px;
     height: 40px;
   }
-  
+
   .dot {
     width: 8px;
     height: 8px;
   }
-  
+
   .slide--title h1 {
     font-size: 28px;
   }
-  
+
   .subtitle {
     font-size: 16px;
   }
-  
+
   .slide-image {
     height: 200px;
   }
-  
+
   .image-caption {
     font-size: 12px;
   }
@@ -939,8 +1171,12 @@ p {
 
 /* Floating elements animation */
 @keyframes floatElement {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(2deg); }
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
 }
 
 .floating {
