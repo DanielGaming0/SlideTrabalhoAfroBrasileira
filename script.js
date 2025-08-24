@@ -1,4 +1,4 @@
-// script.js - Versão Aprimorada
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
   const slides = Array.from(document.querySelectorAll('.slide'));
   const prevBtn = document.getElementById('prevBtn');
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animate elements in the first slide IMMEDIATELY - ZERO DELAY
       requestAnimationFrame(() => {
         animateSlideContent(s);
-        addFloatingElements(s);
       });
     } else {
       s.style.transform = 'translateX(100%)';
@@ -44,48 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
       s.setAttribute('aria-hidden', 'true');
     }
   });
-
-  // Add floating decorative elements to slides
-  function addFloatingElements(slide) {
-    // Remove existing floating elements if any
-    const existingElements = slide.querySelectorAll('.floating-element');
-    existingElements.forEach(el => el.remove());
-    
-    // Don't add to title slide (it already has particles)
-    if (slide.classList.contains('slide--title')) return;
-    
-    // Add different floating elements based on slide index
-    const colors = ['#8B4513', '#A0522D', '#CD853F', '#D2691E', '#8B0000'];
-    const shapes = ['circle', 'square', 'triangle'];
-    
-    // Add 5-8 floating elements per slide
-    const elementCount = 5 + Math.floor(Math.random() * 4);
-    
-    for (let i = 0; i < elementCount; i++) {
-      const element = document.createElement('div');
-      const size = 15 + Math.floor(Math.random() * 25);
-      const shape = shapes[Math.floor(Math.random() * shapes.length)];
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      
-      element.className = `floating-element shape-${shape}`;
-      element.style.width = `${size}px`;
-      element.style.height = shape !== 'triangle' ? `${size}px` : '0';
-      element.style.background = shape !== 'triangle' ? color : 'transparent';
-      element.style.color = color;
-      element.style.opacity = `${0.1 + Math.random() * 0.15}`;
-      
-      // Random position
-      element.style.left = `${10 + Math.random() * 80}%`;
-      element.style.top = `${10 + Math.random() * 80}%`;
-      
-      // Random animation duration and delay
-      const duration = 20 + Math.random() * 20;
-      const delay = Math.random() * 10;
-      element.style.animation = `floatElement ${duration}s infinite ease-in-out ${delay}s`;
-      
-      slide.appendChild(element);
-    }
-  }
 
   // Animate slide content when it becomes active - ZERO DELAY
   function animateSlideContent(slide) {
@@ -245,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animate content of the new active slide IMMEDIATELY - ZERO DELAY
       requestAnimationFrame(() => {
         animateSlideContent(to);
-        addFloatingElements(to);
       });
 
       current = nextIdx;
@@ -334,25 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     @keyframes floatElement {
-      0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-      33% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
-      66% { transform: translateY(10px) translateX(-15px) rotate(-3deg); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes rotateSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-20px); }
-      60% { transform: translateY(-10px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
     }
   `;
   document.head.appendChild(style);
