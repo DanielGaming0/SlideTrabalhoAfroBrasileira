@@ -1,151 +1,312 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomia Afro-Brasileira</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gastronomia Afro-Brasileira: Sabores, História e Identidade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="slideshow-container">
-        <!-- Slide 1 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Gastronomia Afro-Brasileira: Sabores, História e Identidade</h1>
-                <h2>Uma viagem pela herança africana na mesa do Brasil</h2>
-                <div class="image-container">
-                    <img src="assets/slide1.jpg" alt="Gastronomia Afro-Brasileira">
-                </div>
-            </div>
-        </div>
+  <main class="slider" aria-roledescription="carousel">
+    <div class="slides" id="slides">
 
-        <!-- Slide 2 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Introdução</h1>
-                <p>O que é a Gastronomia Afro-Brasileira?</p>
-                <p>A gastronomia afro-brasileira é um conjunto de práticas culinárias, saberes e ingredientes trazidos pelos povos africanos escravizados e que se fundiram com ingredientes nativos e europeus, formando a base da culinária brasileira.</p>
-                <div class="image-container">
-                    <img src="assets/slide2.jpg" alt="Introdução à Gastronomia Afro-Brasileira">
-                </div>
-            </div>
+      <!-- SLIDE 1: Título -->
+      <section class="slide slide--title" data-index="0" aria-hidden="false">
+        <div class="title-background">
+          <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
         </div>
-
-        <!-- Slide 3 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Pratos Típicos (1)</h1>
-                <h2>Acarajé e Abará</h2>
-                <p>O acarajé é um bolinho de feijão-fradinho frito no azeite de dendê, recheado com vatapá, caruru e camarão. O abará é a versão cozida. São pratos de origem iorubá, com forte ligação religiosa no candomblé.</p>
-                <div class="image-container">
-                    <img src="assets/slide3.jpg" alt="Acarajé e Abará">
-                </div>
-            </div>
+        <div class="title-content">
+          <h1>Gastronomia Afro-Brasileira</h1>
+          <div class="subtitle">Sabores, História e Identidade</div>
+          <div class="decorative-line"></div>
+          <div class="subject-tag">Cultura & Tradição</div>
         </div>
+      </section>
 
-        <!-- Slide 4 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Pratos Típicos (2)</h1>
-                <h2>Vatapá e Caruru</h2>
-                <p>O vatapá é um creme feito com pão, camarão, amendoim, castanha e azeite de dendê. O caruru é um refogado de quiabo com camarão seco e dendê. Ambos são frequentemente servidos como acompanhamentos.</p>
-                <div class="image-container">
-                    <img src="assets/slide4.jpg" alt="Vatapá e Caruru">
-                </div>
+      <!-- SLIDE 2: Introdução -->
+      <section class="slide" data-index="1" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-utensils"></i> O que é a Gastronomia Afro-Brasileira?</h2>
+            <p>A gastronomia afro-brasileira é um conjunto de práticas culinárias, saberes e ingredientes trazidos pelos povos africanos escravizados e que se fundiram com ingredientes nativos e europeus, formando a base da culinária brasileira.</p>
+            
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-globe-africa"></i></div>
+                <h3>Origem Africana</h3>
+                <p>Raízes nas tradições culinárias dos povos trazidos da África</p>
+              </div>
+              
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-blender"></i></div>
+                <h3>Fusão Cultural</h3>
+                <p>Combinação de ingredientes africanos, indígenas e europeus</p>
+              </div>
+              
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-heart"></i></div>
+                <h3>Identidade Nacional</h3>
+                <p>Base fundamental da culinária brasileira contemporânea</p>
+              </div>
             </div>
-        </div>
-
-        <!-- Slide 5 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Pratos Típicos (3)</h1>
-                <h2>Feijoada</h2>
-                <p>Considerada o prato nacional do Brasil, a feijoada tem suas raízes na adaptação feita pelos escravizados, que utilizavam as partes menos nobres do porco (como orelha, pé e rabo) e as misturavam com feijão preto.</p>
-                <div class="image-container">
-                    <img src="assets/slide5.jpg" alt="Feijoada">
-                </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide2.jpg" alt="Introdução à gastronomia afro-brasileira" class="slide-image">
             </div>
+            <div class="image-caption">A riqueza e diversidade da culinária afro-brasileira</div>
+          </div>
         </div>
+      </section>
 
-        <!-- Slide 6 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Pratos Típicos (4)</h1>
-                <h2>Mungunzá e Cuscuz</h2>
-                <p>O mungunzá (ou canjica) é um doce de milho branco cozido com leite e açúcar. O cuscuz de milho, herança africana e indígena, é um alimento versátil consumido em todo o país.</p>
-                <div class="image-container">
-                    <img src="assets/slide6.jpg" alt="Mungunzá e Cuscuz">
-                </div>
+      <!-- SLIDE 3: Pratos Típicos (1) -->
+      <section class="slide" data-index="2" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-drumstick-bite"></i> Pratos Típicos (1)</h2>
+            <h3>Acarajé e Abará</h3>
+            <p>O acarajé é um bolinho de feijão-fradinho frito no azeite de dendê, recheado com vatapá, caruru e camarão. O abará é a versão cozida. São pratos de origem iorubá, com forte ligação religiosa no candomblé.</p>
+            
+            <div class="note-box">
+              <i class="fas fa-info-circle"></i>
+              <p>O acarajé é considerado patrimônio cultural brasileiro e é especialmente popular na Bahia, onde é preparado e vendido pelas baianas de acarajé.</p>
             </div>
-        </div>
-
-        <!-- Slide 7 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Ingredientes-Chave</h1>
-                <h2>Azeite de Dendê: O Ouro Vermelho</h2>
-                <p>O azeite de dendê, extraído do fruto do dendezeiro, é mais do que um ingrediente: é um símbolo cultural e religioso. Ele confere cor, sabor e aroma característicos a muitos pratos.</p>
-                <div class="image-container">
-                    <img src="assets/slide7.jpg" alt="Azeite de Dendê">
-                </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide3.jpg" alt="Acarajé e Abará" class="slide-image">
             </div>
+            <div class="image-caption">Acarajé e Abará - iguarias da culinária afro-brasileira</div>
+          </div>
         </div>
+      </section>
 
-        <!-- Slide 8 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Ingredientes e Base Alimentar</h1>
-                <h2>Milho, Feijão e Mandioca: A Tríade</h2>
-                <p>Esses ingredientes, combinados com técnicas africanas, formam a base de muitos pratos. A farinha de mandioca, o feijão de várias cores e o milho são pilares dessa culinária de resistência.</p>
-                <div class="image-container">
-                    <img src="assets/slide8.jpg" alt="Ingredientes Base">
-                </div>
+      <!-- SLIDE 4: Pratos Típicos (2) -->
+      <section class="slide" data-index="3" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-drumstick-bite"></i> Pratos Típicos (2)</h2>
+            <h3>Vatapá e Caruru</h3>
+            <p>O vatapá é um creme feito com pão, camarão, amendoim, castanha e azeite de dendê. O caruru é um refogado de quiabo com camarão seco e dendê. Ambos são frequentemente servidos como acompanhamentos.</p>
+            
+            <div class="note-box">
+              <i class="fas fa-info-circle"></i>
+              <p>Estes pratos são tradicionalmente servidos em festas religiosas do candomblé, especialmente no dia de Cosme e Damião (27 de setembro).</p>
             </div>
-        </div>
-
-        <!-- Slide 9 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Patrimônio Cultural</h1>
-                <h2>A Culinária como Memória e Resistência</h2>
-                <p>A gastronomia afro-brasileira é um patrimônio cultural imaterial. Ela conta a história de um povo, preserva tradições e é um ato de resistência que mantém viva a identidade cultural africana no Brasil.</p>
-                <div class="image-container">
-                    <img src="assets/slide9.jpg" alt="Patrimônio Cultural">
-                </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide4.jpg" alt="Vatapá e Caruru" class="slide-image">
             </div>
+            <div class="image-caption">Vatapá e Caruru - acompanhamentos saborosos</div>
+          </div>
         </div>
+      </section>
 
-        <!-- Slide 10 -->
-        <div class="mySlides fade">
-            <div class="slide-content">
-                <h1>Conclusão</h1>
-                <h2>Sabores que Contam uma História</h2>
-                <p>Cada prato é uma página da história do Brasil. A gastronomia afro-brasileira é uma celebração da vida, da comunidade e da incrível capacidade de criar sabor, identidade e cultura mesmo diante da adversidade.</p>
-                <div class="image-container">
-                    <img src="assets/slide10.jpg" alt="Conclusão">
-                </div>
+      <!-- SLIDE 5: Pratos Típicos (3) -->
+      <section class="slide" data-index="4" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-drumstick-bite"></i> Pratos Típicos (3)</h2>
+            <h3>Feijoada</h3>
+            <p>Considerada o prato nacional do Brasil, a feijoada tem suas raízes na adaptação feita pelos escravizados, que utilizavam as partes menos nobres do porco (como orelha, pé e rabo) e as misturavam com feijão preto.</p>
+            
+            <div class="note-box">
+              <i class="fas fa-info-circle"></i>
+              <p>A feijoada completa é tradicionalmente servida às quartas-feiras e sábados, acompanhada de couve, farofa, laranja e arroz.</p>
             </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide5.jpg" alt="Feijoada" class="slide-image">
+            </div>
+            <div class="image-caption">Feijoada - o prato nacional brasileiro</div>
+          </div>
         </div>
+      </section>
 
-        <!-- Botões de navegação -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <!-- SLIDE 6: Pratos Típicos (4) -->
+      <section class="slide" data-index="5" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-drumstick-bite"></i> Pratos Típicos (4)</h2>
+            <h3>Mungunzá e Cuscuz</h3>
+            <p>O mungunzá (ou canjica) é um doce de milho branco cozido com leite e açúcar. O cuscuz de milho, herança africana e indígena, é um alimento versátil consumido em todo o país.</p>
+            
+            <div class="note-box">
+              <i class="fas fa-info-circle"></i>
+              <p>O mungunzá doce é tradicional nas festas juninas, enquanto o salgado (mungunzá de milho com carne) é um prato típico do Nordeste.</p>
+            </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide6.jpg" alt="Mungunzá e Cuscuz" class="slide-image">
+            </div>
+            <div class="image-caption">Mungunzá e Cuscuz - sabores tradicionais</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Ingredientes-Chave -->
+      <section class="slide" data-index="6" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-seedling"></i> Ingredientes-Chave</h2>
+            <h3>Azeite de Dendê: O Ouro Vermelho</h3>
+            <p>O azeite de dendê, extraído do fruto do dendezeiro, é mais do que um ingrediente: é um símbolo cultural e religioso. Ele confere cor, sabor e aroma característicos a muitos pratos.</p>
+            
+            <div class="note-box">
+              <i class="fas fa-info-circle"></i>
+              <p>O dendê foi trazido da África para o Brasil no século XVI e adaptou-se perfeitamente ao clima tropical brasileiro, especialmente na região Nordeste.</p>
+            </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide7.jpg" alt="Azeite de Dendê" class="slide-image">
+            </div>
+            <div class="image-caption">Azeite de Dendê - o ouro vermelho da culinária afro-brasileira</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Ingredientes e Base Alimentar -->
+      <section class="slide" data-index="7" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-seedling"></i> Ingredientes e Base Alimentar</h2>
+            <h3>Milho, Feijão e Mandioca: A Tríade</h3>
+            <p>Esses ingredientes, combinados com técnicas africanas, formam a base de muitos pratos. A farinha de mandioca, o feijão de várias cores e o milho são pilares dessa culinária de resistência.</p>
+            
+            <div class="info-cards">
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-bread-slice"></i></div>
+                <h3>Mandioca</h3>
+                <p>Base para farinhas, bijus e tapiocas, adaptação de técnicas indígenas</p>
+              </div>
+              
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-mortar-pestle"></i></div>
+                <h3>Feijão</h3>
+                <p>Variedades múltiplas utilizadas em pratos como acarajé e feijoada</p>
+              </div>
+              
+              <div class="info-card">
+                <div class="card-icon"><i class="fas fa-wheat-alt"></i></div>
+                <h3>Milho</h3>
+                <p>Base para canjica, cuscuz, pamonha e outros pratos tradicionais</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide8.jpg" alt="Milho, Feijão e Mandioca" class="slide-image">
+            </div>
+            <div class="image-caption">A tríade base: milho, feijão e mandioca</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Patrimônio Cultural -->
+      <section class="slide" data-index="8" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-landmark"></i> Patrimônio Cultural</h2>
+            <h3>A Culinária como Memória e Resistência</h3>
+            <p>A gastronomia afro-brasileira é um patrimônio cultural imaterial. Ela conta a história de um povo, preserva tradições e é um ato de resistência que mantém viva a identidade cultural africana no Brasil.</p>
+            
+            <div class="importance-grid">
+              <div class="importance-card">
+                <h3><i class="fas fa-book"></i> Memória</h3>
+                <p>Preservação de saberes e técnicas ancestrais através das gerações</p>
+              </div>
+              
+              <div class="importance-card">
+                <h3><i class="fas fa-fist-raised"></i> Resistência</h3>
+                <p>Manutenção da identidade cultural apesar da diáspora e opressão</p>
+              </div>
+              
+              <div class="importance-card">
+                <h3><i class="fas fa-hands-helping"></i> Comunidade</h3>
+                <p>Fortalecimento de vínculos comunitários através das práticas culinárias</p>
+              </div>
+            </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide9.jpg" alt="Patrimônio Cultural" class="slide-image">
+            </div>
+            <div class="image-caption">A culinária como expressão cultural e resistência</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: Conclusão -->
+      <section class="slide slide--conclusion" data-index="9" aria-hidden="true">
+        <div class="content-wrap">
+          <div class="text">
+            <h2><i class="fas fa-check-circle"></i> Conclusão</h2>
+            <p>Sabores que Contam uma História. Cada prato é uma página da história do Brasil. A gastronomia afro-brasileira é uma celebração da vida, da comunidade e da incrível capacidade de criar sabor, identidade e cultura mesmo diante da adversidade.</p>
+            
+            <div class="key-points">
+              <div class="key-point">
+                <i class="fas fa-utensils"></i>
+                <span>Fusão de saberes africanos, indígenas e europeus</span>
+              </div>
+              <div class="key-point">
+                <i class="fas fa-history"></i>
+                <span>Preservação de técnicas e ingredientes ancestrais</span>
+              </div>
+              <div class="key-point">
+                <i class="fas fa-heart"></i>
+                <span>Expressão de resistência cultural e identidade</span>
+              </div>
+              <div class="key-point">
+                <i class="fas fa-globe"></i>
+                <span>Contribuição fundamental para a culinária brasileira</span>
+              </div>
+            </div>
+            
+            <div class="final-message">
+              <p>A gastronomia afro-brasileira é um legado vivo que continua a enriquecer e diversificar a cultura alimentar do Brasil.</p>
+            </div>
+          </div>
+          <div class="slide-image-container">
+            <div class="image-frame">
+              <img src="assets/slide10.jpg" alt="Conclusão" class="slide-image">
+            </div>
+            <div class="image-caption">Celebração da gastronomia afro-brasileira</div>
+          </div>
+        </div>
+      </section>
+
     </div>
 
-    <!-- Indicadores de slides -->
-    <div class="dots-container">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-        <span class="dot" onclick="currentSlide(6)"></span>
-        <span class="dot" onclick="currentSlide(7)"></span>
-        <span class="dot" onclick="currentSlide(8)"></span>
-        <span class="dot" onclick="currentSlide(9)"></span>
-        <span class="dot" onclick="currentSlide(10)"></span>
+    <!-- CONTROLES -->
+    <div class="controls" role="toolbar" aria-label="Controles do carrossel">
+      <button id="prevBtn" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="dots" id="dots" role="tablist" aria-label="Navegação por slides"></div>
+      <button id="nextBtn" aria-label="Próximo">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
-  </html>
+</html>
