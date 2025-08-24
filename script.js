@@ -1,4 +1,4 @@
-// script.js
+// script.js atualizado
 document.addEventListener('DOMContentLoaded', () => {
   const slides = Array.from(document.querySelectorAll('.slide'));
   const prevBtn = document.getElementById('prevBtn');
@@ -32,88 +32,76 @@ document.addEventListener('DOMContentLoaded', () => {
       s.style.transform = 'translateX(0)';
       s.style.opacity = '1';
       s.setAttribute('aria-hidden', 'false');
-      
-      // Animate elements in the first slide IMMEDIATELY - ZERO DELAY
-      requestAnimationFrame(() => {
-        animateSlideContent(s);
-      });
-    } else {
-      s.style.transform = 'translateX(100%)';
-      s.style.opacity = '0';
-      s.setAttribute('aria-hidden', 'true');
     }
+    
+    // Add floating circles to each slide
+    addFloatingCircles(s);
+    
+    // Add decorative corners to each slide
+    addDecorativeCorners(s);
   });
 
-  // Animate slide content when it becomes active - ZERO DELAY
+  // Animate slide content when it becomes active
   function animateSlideContent(slide) {
     // Reset animations
     const textElements = slide.querySelectorAll('.text > *');
     const imageElements = slide.querySelectorAll('.slide-image-container');
+    const cards = slide.querySelectorAll('.info-card, .importance-card');
+    const notes = slide.querySelectorAll('.note-box');
+    const keyPoints = slide.querySelectorAll('.key-point');
     
+    // Remove any existing animations
     textElements.forEach(el => {
       el.style.animation = 'none';
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
     });
-    
     imageElements.forEach(el => {
       el.style.animation = 'none';
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
+    });
+    cards.forEach(el => {
+      el.style.animation = 'none';
+    });
+    notes.forEach(el => {
+      el.style.animation = 'none';
+    });
+    keyPoints.forEach(el => {
+      el.style.animation = 'none';
     });
     
-    // Force reflow
+    // Trigger reflow
     void slide.offsetWidth;
     
-    // Animate text elements with ZERO initial delay
+    // Apply staggered animations
     textElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out both`;
+      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.1}s both`;
     });
     
-    // Animate image elements with ZERO initial delay
     imageElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.6s ease-out both`;
+      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.15 + 0.2}s both`;
     });
     
-    // Special animations for info cards with ZERO initial delay
-    const infoCards = slide.querySelectorAll('.info-card');
-    if (infoCards.length) {
-      infoCards.forEach((card, i) => {
-        card.style.animation = `fadeInUp 0.5s ease-out both`;
-      });
-    }
-    
-    // Special animations for note boxes with ZERO initial delay
-    const noteBoxes = slide.querySelectorAll('.note-box');
-    if (noteBoxes.length) {
-      noteBoxes.forEach((box, i) => {
-        box.style.animation = `fadeInUp 0.5s ease-out both`;
-      });
-    }
-    
-    // Add animation to images
-    const images = slide.querySelectorAll('.slide-image');
-    images.forEach(img => {
-      // Reset any previous animation
-      img.style.animation = 'none';
-      
-      // Add subtle floating animation
-      img.style.animation = 'float 5s ease-in-out infinite';
-      
-      // Add hover effect with JavaScript for better compatibility
-      img.addEventListener('mouseenter', () => {
-        img.style.transform = 'scale(1.05)';
-        img.style.filter = 'brightness(1.05) contrast(1.05)';
-      });
-      
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'scale(1)';
-        img.style.filter = 'brightness(0.95) contrast(0.95)';
-      });
+    cards.forEach((el, i) => {
+      el.style.animation = `fadeInUp 0.5s ease-out ${i * 0.1 + 0.3}s both`;
     });
-
-    // Add decorative corners to slides
-    addDecorativeCorners(slide);
+    
+    notes.forEach((el, i) => {
+      el.style.animation = `fadeInUp 0.5s ease-out ${i * 0.1 + 0.4}s both`;
+    });
+    
+    keyPoints.forEach((el, i) => {
+      el.style.animation = `fadeInUp 0.5s ease-out ${i * 0.1 + 0.5}s both`;
+    });
+    
+    // Add special animations to specific elements
+    const icons = slide.querySelectorAll('.card-icon, .key-point i');
+    icons.forEach(icon => {
+      icon.style.animation = 'pulse 2s infinite ease-in-out';
+    });
+    
+    // Add bounce animation to final message
+    const finalMessage = slide.querySelector('.final-message');
+    if (finalMessage) {
+      finalMessage.style.animation = 'bounce 3s infinite ease-in-out';
+    }
   }
 
   // Add decorative corners to slides
@@ -122,19 +110,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const existingCorners = slide.querySelectorAll('.decorative-corner');
     existingCorners.forEach(corner => corner.remove());
     
-    // Add new corners
-    const corners = [
-      { position: 'top-left' },
-      { position: 'top-right' },
-      { position: 'bottom-left' },
-      { position: 'bottom-right' }
-    ];
+    const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
     
-    corners.forEach(corner => {
-      const cornerEl = document.createElement('div');
-      cornerEl.className = `decorative-corner decorative-corner--${corner.position}`;
-      slide.appendChild(cornerEl);
+    positions.forEach(pos => {
+      const corner = document.createElement('div');
+      corner.className = `decorative-corner decorative-corner--${pos}`;
+      slide.appendChild(corner);
     });
+  }
+
+  // Add floating circles to slides
+  function addFloatingCircles(slide) {
+    // Skip title slide (already has particles)
+    if (slide.classList.contains('slide--title')) return;
+    
+    const floatingCircles = document.createElement('div');
+    floatingCircles.className = 'floating-circles';
+    
+    // Create 5 circles with different properties
+    for (let i = 1; i <= 5; i++) {
+      const circle = document.createElement('div');
+      circle.className = 'circle';
+      floatingCircles.appendChild(circle);
+    }
+    
+    slide.appendChild(floatingCircles);
   }
 
   // Update progress bar
@@ -153,65 +153,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isAnimating || nextIdx === current) return;
     if (nextIdx < 0) nextIdx = slides.length - 1;
     if (nextIdx >= slides.length) nextIdx = 0;
-
+    
     isAnimating = true;
-    const from = slides[current];
-    const to = slides[nextIdx];
-    const direction = (nextIdx > current || (current === slides.length - 1 && nextIdx === 0)) ? 'next' : 'prev';
-
-    // Prepare incoming slide
-    to.style.transition = 'none';
-    to.style.opacity = '1';
-    to.style.transform = direction === 'next' ? 'translateX(100%)' : 'translateX(-100%)';
-    to.classList.add('preparing');
-    to.style.zIndex = 3;
-
-    // Force reflow
-    void to.offsetWidth;
-
-    // Animate both slides
-    from.style.transition = `transform ${TRANS_MS}ms ease, opacity ${TRANS_MS}ms ease`;
-    to.style.transition = `transform ${TRANS_MS}ms ease, opacity ${TRANS_MS}ms ease`;
-
-    from.style.transform = direction === 'next' ? 'translateX(-100%)' : 'translateX(100%)';
-    from.style.opacity = '0';
-
-    to.style.transform = 'translateX(0)';
-    to.style.opacity = '1';
-
-    let finished = false;
-    function done() {
-      if (finished) return;
-      finished = true;
-
-      from.classList.remove('active');
-      from.style.transition = '';
-      from.style.transform = '';
-      from.style.opacity = '';
-      from.style.zIndex = '';
-      from.setAttribute('aria-hidden', 'true');
-
-      to.classList.add('active');
-      to.classList.remove('preparing');
-      to.style.transition = '';
-      to.style.transform = '';
-      to.style.opacity = '';
-      to.style.zIndex = '';
-      to.setAttribute('aria-hidden', 'false');
+    
+    // Update current and next slides
+    const currentSlide = slides[current];
+    const nextSlide = slides[nextIdx];
+    
+    // Set direction for animation
+    const direction = nextIdx > current ? 1 : -1;
+    
+    // Animate out current slide
+    currentSlide.style.transform = `translateX(${-direction * 100}%)`;
+    currentSlide.style.opacity = '0';
+    currentSlide.setAttribute('aria-hidden', 'true');
+    
+    // Prepare next slide
+    nextSlide.style.transform = `translateX(${direction * 100}%)`;
+    nextSlide.classList.add('active');
+    
+    // Animate in next slide
+    setTimeout(() => {
+      nextSlide.style.transform = 'translateX(0)';
+      nextSlide.style.opacity = '1';
+      nextSlide.setAttribute('aria-hidden', 'false');
       
-      // Animate content of the new active slide IMMEDIATELY - ZERO DELAY
-      requestAnimationFrame(() => {
-        animateSlideContent(to);
-      });
-
+      // Animate content in the new slide
+      animateSlideContent(nextSlide);
+      
+      // Update current index and UI
       current = nextIdx;
       updateDots(current);
       updateProgress(current);
+      
+      // Add floating animation to elements
+      const floatingElements = nextSlide.querySelectorAll('.info-card, .note-box, .importance-card');
+      floatingElements.forEach(el => {
+        el.classList.add('floating');
+      });
+      
       isAnimating = false;
-    }
-
-    to.addEventListener('transitionend', done, { once: true });
-    setTimeout(done, TRANS_MS);
+    }, TRANS_MS);
+    
+    // Remove active class from current slide after transition
+    setTimeout(() => {
+      currentSlide.classList.remove('active');
+    }, TRANS_MS);
   }
 
   // Navigation controls
@@ -221,10 +208,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
-    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
-    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
-    if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      goTo(current + 1);
+    }
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      goTo(current - 1);
+    }
+    if (e.key === 'Home') {
+      e.preventDefault();
+      goTo(0);
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      goTo(slides.length - 1);
+    }
   });
 
   // Touch swipe support
@@ -234,73 +233,71 @@ document.addEventListener('DOMContentLoaded', () => {
     touchStartY = e.touches[0].clientY;
     touchMoved = false;
   }, {passive: true});
-  
-  document.addEventListener('touchmove', (e) => { 
+
+  document.addEventListener('touchmove', (e) => {
     if (!touchMoved && e.touches.length === 1) {
       const touchX = e.touches[0].clientX;
       const touchY = e.touches[0].clientY;
       
-      if (Math.abs(touchX - touchStartX) > 5 || Math.abs(touchY - touchStartY) > 5) {
+      // Check if it's primarily a horizontal swipe
+      if (Math.abs(touchX - touchStartX) > Math.abs(touchY - touchStartY) && 
+          Math.abs(touchX - touchStartX) > THRESHOLD) {
         touchMoved = true;
+        
+        if (touchX < touchStartX) {
+          goTo(current + 1); // Swipe left - next
+        } else {
+          goTo(current - 1); // Swipe right - previous
+        }
       }
     }
   }, {passive: true});
-  
+
   document.addEventListener('touchend', (e) => {
     if (!touchMoved) return;
     const touchEndX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : touchStartX;
     const touchEndY = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientY : touchStartY;
     
-    const dx = touchEndX - touchStartX;
-    const dy = Math.abs(touchEndY - touchStartY);
-    
-    if (Math.abs(dx) > THRESHOLD && Math.abs(dx) > dy) {
-      if (dx < 0) goTo(current + 1);
-      else goTo(current - 1);
+    // Check if it's a valid swipe
+    if (Math.abs(touchEndX - touchStartX) > THRESHOLD && 
+        Math.abs(touchEndX - touchStartX) > Math.abs(touchEndY - touchStartY)) {
+      if (touchEndX < touchStartX) {
+        goTo(current + 1); // Swipe left - next
+      } else {
+        goTo(current - 1); // Swipe right - previous
+      }
     }
   }, {passive: true});
 
   // Initialize progress bar
   updateProgress(current);
   
-  // Add CSS animations dynamically
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      25% { transform: translateY(-8px) translateX(5px); }
-      50% { transform: translateY(4px) translateX(10px); }
-      75% { transform: translateY(8px) translateX(-5px); }
-    }
-
-    @keyframes floatElement {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(2deg); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Add floating animation to some elements
+  // Animate content in the first slide
   setTimeout(() => {
+    animateSlideContent(slides[current]);
+    
+    // Add floating animation to elements
     const floatingElements = document.querySelectorAll('.info-card, .note-box, .importance-card');
     floatingElements.forEach(el => {
       el.classList.add('floating');
     });
-  }, 1000);
+  }, 100);
+  
+  // Auto-rotate slides (optional - can be disabled)
+  let autoRotateInterval = setInterval(() => {
+    goTo(current + 1);
+  }, 8000);
+  
+  // Pause auto-rotation when user interacts
+  document.addEventListener('keydown', () => {
+    clearInterval(autoRotateInterval);
+  });
+  
+  document.addEventListener('click', () => {
+    clearInterval(autoRotateInterval);
+  });
+  
+  document.addEventListener('touchstart', () => {
+    clearInterval(autoRotateInterval);
+  });
 });
