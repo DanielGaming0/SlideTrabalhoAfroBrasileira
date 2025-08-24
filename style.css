@@ -1,4 +1,4 @@
-/* style.css atualizado */
+/* style.css atualizado - Sem efeito de tela branca */
 :root {
   --primary: #8B4513;
   --primary-light: #A0522D;
@@ -49,7 +49,7 @@ html, body {
   height: 100%;
 }
 
-/* Base slide */
+/* Base slide - REMOVIDO O EFEITO DE TELA BRANCA */
 .slide {
   position: absolute;
   left: 0;
