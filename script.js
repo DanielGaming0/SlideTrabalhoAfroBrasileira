@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextBtn = document.getElementById('nextBtn');
   const dotsWrap = document.getElementById('dots');
   const progressBar = document.getElementById('progressBar');
-  const TRANS_MS = 600;
+  const TRANS_MS = 500; // Reduzido de 600ms para 500ms
 
   let current = 0;
   let isAnimating = false;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Animate elements in the first slide
       setTimeout(() => {
         animateSlideContent(s);
-      }, 300);
+      }, 100); // Reduzido de 300ms para 100ms
     } else {
       s.style.transform = 'translateX(100%)';
       s.style.opacity = '0';
@@ -65,21 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Force reflow
     void slide.offsetWidth;
     
-    // Animate text elements with staggered delay
+    // Animate text elements with staggered delay (reduzido)
     textElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.8s ease-out ${i * 0.2}s both`;
+      el.style.animation = `fadeInUp 0.6s ease-out ${i * 0.1}s both`; // Reduzido
     });
     
     // Animate image elements
     imageElements.forEach((el, i) => {
-      el.style.animation = `fadeInUp 0.8s ease-out ${(textElements.length * 0.2) + (i * 0.2)}s both`;
+      el.style.animation = `fadeInUp 0.6s ease-out ${(textElements.length * 0.1) + (i * 0.1)}s both`; // Reduzido
     });
     
     // Special animations for info cards
     const infoCards = slide.querySelectorAll('.info-card');
     if (infoCards.length) {
       infoCards.forEach((card, i) => {
-        card.style.animation = `fadeInUp 0.6s ease-out ${0.4 + (i * 0.2)}s both`;
+        card.style.animation = `fadeInUp 0.5s ease-out ${0.2 + (i * 0.1)}s both`; // Reduzido
       });
     }
     
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const noteBoxes = slide.querySelectorAll('.note-box');
     if (noteBoxes.length) {
       noteBoxes.forEach((box, i) => {
-        box.style.animation = `fadeInUp 0.6s ease-out ${0.6 + (i * 0.2)}s both`;
+        box.style.animation = `fadeInUp 0.5s ease-out ${0.3 + (i * 0.1)}s both`; // Reduzido
       });
     }
     
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       img.style.animation = 'none';
       
       // Add subtle floating animation
-      img.style.animation = 'float 6s ease-in-out infinite';
+      img.style.animation = 'float 5s ease-in-out infinite'; // Reduzido
       
       // Add hover effect with JavaScript for better compatibility
       img.addEventListener('mouseenter', () => {
@@ -110,6 +110,30 @@ document.addEventListener('DOMContentLoaded', () => {
         img.style.transform = 'scale(1)';
         img.style.filter = 'brightness(0.95) contrast(0.95)';
       });
+    });
+
+    // Add decorative corners to slides
+    addDecorativeCorners(slide);
+  }
+
+  // Add decorative corners to slides
+  function addDecorativeCorners(slide) {
+    // Remove existing corners if any
+    const existingCorners = slide.querySelectorAll('.decorative-corner');
+    existingCorners.forEach(corner => corner.remove());
+    
+    // Add new corners
+    const corners = [
+      { position: 'top-left' },
+      { position: 'top-right' },
+      { position: 'bottom-left' },
+      { position: 'bottom-right' }
+    ];
+    
+    corners.forEach(corner => {
+      const cornerEl = document.createElement('div');
+      cornerEl.className = `decorative-corner decorative-corner--${corner.position}`;
+      slide.appendChild(cornerEl);
     });
   }
 
@@ -185,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     to.addEventListener('transitionend', done, { once: true });
-    setTimeout(done, TRANS_MS + 90);
+    setTimeout(done, TRANS_MS + 50); // Reduzido de 90ms para 50ms
   }
 
   // Navigation controls
@@ -262,6 +286,19 @@ document.addEventListener('DOMContentLoaded', () => {
       50% { transform: translateY(4px) translateX(10px); }
       75% { transform: translateY(8px) translateX(-5px); }
     }
+
+    @keyframes floatElement {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+    }
   `;
   document.head.appendChild(style);
+
+  // Add floating animation to some elements
+  setTimeout(() => {
+    const floatingElements = document.querySelectorAll('.info-card, .note-box, .importance-card');
+    floatingElements.forEach(el => {
+      el.classList.add('floating');
+    });
+  }, 1000);
 });
